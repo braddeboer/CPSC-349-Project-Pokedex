@@ -14,7 +14,7 @@ def api_parser():
     #converts the raw data into a readable key value dict
     data = web_response.json()
 
-    #call information sorter function and pass the json data set
+    #calls functions and passes the json data set
     information_sorter(data)
     pokemon_sprites(data)
     pokemon_cry(data)
@@ -35,9 +35,11 @@ def information_sorter(data):
     print("PokeDex Num: " + str(poke_num) + "\nPokemon Weight: " + str(weight) + "\nPokemon Height: " + str(height) + "\nPokemon Types: " + str(types) + "\nPokemon's Possible Moves: " + str(moves))
 
 def pokemon_sprites(data):
+    #gets and loads the pokemon sprite on a new browser tab
     webbrowser.open(data["sprites"]["other"]["showdown"]["front_default"])
     
 def pokemon_cry(data):
+    #do not believe this function is working yet, still trying to get the libraries to work
     cry = data["cries"]["latest"]
     cry_audio = BytesIO(requests.get(cry).content)
     
